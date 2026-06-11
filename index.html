@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HGW Colombia - Salud & Oportunidad de Negocio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e7145;
+            --primary-light: #2d9f5f;
+            --accent: #d4a574;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 113, 69, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e9 100%);
+            padding: 80px 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(45, 159, 95, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(30, 113, 69, 0.25);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(45, 159, 95, 0.1) 0%, rgba(212, 165, 116, 0.05) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            color: rgba(30, 113, 69, 0.2);
+            overflow: hidden;
+        }
+
+        .hero-image::after {
+            content: '🌿';
+            font-size: 200px;
+            opacity: 0.5;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            padding: 40px 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            background: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .benefit-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .benefit-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 2rem;
+            background: #f8f9fa;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 160px;
+            background: linear-gradient(135deg, rgba(45, 159, 95, 0.1) 0%, rgba(212, 165, 116, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .product-desc {
+            font-size: 12px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Membership Section */
+        .membership {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .membership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .membership-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .membership-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(45, 159, 95, 0.05) 0%, transparent 100%);
+        }
+
+        .membership-card:hover {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .membership-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .membership-card.featured .membership-badge {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .membership-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .membership-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .membership-price-desc {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .membership-benefits {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .membership-benefits li {
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .membership-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 2rem;
+            background: #f8f9fa;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .author-info h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+
+        .author-info p {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 2rem 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .membership-card.featured {
+                transform: scale(1);
+            }
+
+            .cta-section h2 {
+                font-size: 32px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary, .btn-white {
+                width: 100%;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .benefit-card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .benefit-card:nth-child(1) { animation-delay: 0.1s; }
+        .benefit-card:nth-child(2) { animation-delay: 0.2s; }
+        .benefit-card:nth-child(3) { animation-delay: 0.3s; }
+        .benefit-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">HGW Colombia</a>
+            <nav>
+                <a href="#productos">Productos</a>
+                <a href="#oportunidad">Oportunidad</a>
+                <a href="#testimonios">Testimonios</a>
+                <a href="#contacto">Contacto</a>
+                <button class="cta-button">Inscribirse</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div>
+                <h1>Gana dinero vendiendo <span>salud natural</span></h1>
+                <p>Productos de 30+ años de investigación + Oportunidad de negocio real. Sin jefe, sin horarios, sin límite de ingresos.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">Ver productos</button>
+                    <button class="btn-secondary">Ser distribuidor</button>
+                </div>
+            </div>
+            <div class="hero-image"></div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="section-header">
+            <h2>¿Por qué elegir HGW?</h2>
+            <p>Somos más que productos. Somos una oportunidad de cambiar tu vida financiera.</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🌿</div>
+                <h3>Productos naturales</h3>
+                <p>Formulados con 30 años de investigación científica y más de 300 patentes registradas.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🌍</div>
+                <h3>Presencia global</h3>
+                <p>Distribuimos en 40+ países. Somos una empresa establecida con fábricas certificadas en USA y China.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <h3>Ingresos reales</h3>
+                <p>Gana comisiones 15-30% vendiendo + bonos por reclutar. Dinero de verdad, no promesas vacías.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">👥</div>
+                <h3>Comunidad de apoyo</h3>
+                <p>Únete a miles de distribuidores que se ayudan mutuamente. Webinars, mentorías y soporte 24/7.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="productos">
+        <div class="products-container">
+            <div class="section-header">
+                <h2>Productos destacados</h2>
+                <p>Los favoritos de nuestros distribuidores en Colombia</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">☕</div>
+                    <div class="product-info">
+                        <h3>Berry Gano Coffee</h3>
+                        <div class="product-price">$96.000</div>
+                        <div class="product-desc">Café sin azúcar con extracto de reishi. Energía limpia.</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">💪</div>
+                    <div class="product-info">
+                        <h3>Suplemento energía</h3>
+                        <div class="product-price">$84.000</div>
+                        <div class="product-desc">Vitaminas B + minerales. Máxima vitalidad.</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">✨</div>
+                    <div class="product-info">
+                        <h3>Cuidado personal</h3>
+                        <div class="product-price">$54.000</div>
+                        <div class="product-desc">Crema natural. Piel radiante y saludable.</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🫐</div>
+                    <div class="product-info">
+                        <h3>Blueberry Candy</h3>
+                        <div class="product-price">$24.000</div>
+                        <div class="product-desc">Caramelo de arándano. Antioxidantes naturales.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section class="membership" id="oportunidad">
+        <div class="section-header">
+            <h2>Plan de Ganancia Mutua</h2>
+            <p>4 niveles. Elige el que se adapte a tu meta financiera.</p>
+        </div>
+        <div class="membership-grid">
+            <div class="membership-card">
+                <div class="membership-badge">Nivel 1</div>
+                <div class="membership-name">PRE-JUNIOR</div>
+                <div class="membership-price">$500k</div>
+                <div class="membership-price-desc">inversión inicial</div>
+                <ul class="membership-benefits">
+                    <li>Comisión 15%</li>
+                    <li>Bono $50.000/mes</li>
+                    <li>Capacitación básica</li>
+                </ul>
+                <button class="btn-secondary" style="width: 100%;">Más información</button>
+            </div>
+            <div class="membership-card">
+                <div class="membership-badge">Nivel 2</div>
+                <div class="membership-name">JUNIOR</div>
+                <div class="membership-price">$1M</div>
+                <div class="membership-price-desc">inversión inicial</div>
+                <ul class="membership-benefits">
+                    <li>Comisión 20%</li>
+                    <li>Bono $100.000/mes</li>
+                    <li>Webinars 2x/semana</li>
+                </ul>
+                <button class="btn-secondary" style="width: 100%;">Más información</button>
+            </div>
+            <div class="membership-card featured">
+                <div class="membership-badge">Nivel 3 ⭐</div>
+                <div class="membership-name">SENIOR</div>
+                <div class="membership-price">$2M</div>
+                <div class="membership-price-desc">inversión inicial</div>
+                <ul class="membership-benefits">
+                    <li>Comisión 25%</li>
+                    <li>Bono $250.000/mes</li>
+                    <li>Programa de liderazgo</li>
+                    <li>Viajes anuales</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%;">Seleccionar</button>
+            </div>
+            <div class="membership-card">
+                <div class="membership-badge">Nivel 4</div>
+                <div class="membership-name">MASTER</div>
+                <div class="membership-price">$5M+</div>
+                <div class="membership-price-desc">inversión inicial</div>
+                <ul class="membership-benefits">
+                    <li>Comisión 30%</li>
+                    <li>Bono ilimitado</li>
+                    <li>Status VIP global</li>
+                </ul>
+                <button class="btn-secondary" style="width: 100%;">Más información</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonios">
+        <div class="testimonials-container">
+            <div class="section-header">
+                <h2>Historias de éxito</h2>
+                <p>Distribuidores reales ganando dinero de verdad en Colombia</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"En 3 meses gané mi primer millón. Ahora vendo $15k/mes sin esfuerzo. Mi mamá se unió y vendemos juntas."</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">CR</div>
+                        <div class="author-info">
+                            <h4>Camila Rodríguez</h4>
+                            <p>Bogotá • Distribuidora SENIOR</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"Dejé mi trabajo que pagaba $3M/mes. Con HGW gano $8M/mes vendiendo desde casa. Sin jefe, sin límite."</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">CM</div>
+                        <div class="author-info">
+                            <h4>Carlos Mendoza</h4>
+                            <p>Medellín • Distribuidor MASTER</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"Soy estudiante. Vendo HGW en mis ratos libres y gano $500k/mes para mis gastos. Lo mejor que me ha pasado."</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DL</div>
+                        <div class="author-info">
+                            <h4>Daniela López</h4>
+                            <p>Cali • Distribuidora PRE-JUNIOR</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contacto">
+        <div class="cta-content">
+            <h2>¿Listo para cambiar tu vida?</h2>
+            <p>Únete a miles de distribuidores en Colombia que están ganando dinero real vendiendo HGW.</p>
+            <div class="cta-buttons">
+                <button class="btn-white">Inscribirse como distribuidor</button>
+                <button class="btn-white">Contactar por WhatsApp</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HGW Colombia</h3>
+                <p style="font-size: 14px; color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">Empresa de salud y bienestar con 30+ años de experiencia. Productos naturales certificados. Oportunidad de negocio real.</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📷</a>
+                    <a href="#">🎵</a>
+                    <a href="#">▶️</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces útiles</h3>
+                <ul>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#oportunidad">Oportunidad</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><a href="tel:+573005551234">+57 300 555 1234</a></li>
+                    <li><a href="mailto:info@hgwcolombia.com">info@hgwcolombia.com</a></li>
+                    <li><a href="#">Bogotá, Colombia</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Horario</h3>
+                <ul>
+                    <li>Lunes - Viernes: 8am - 6pm</li>
+                    <li>Sábados: 10am - 2pm</li>
+                    <li>Domingos: Cerrado</li>
+                    <li style="margin-top: 20px;"><a href="#">Chat 24/7 disponible</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 HGW Colombia. Todos los derechos reservados. | <a href="#" style="color: rgba(255, 255, 255, 0.6);">Política de privacidad</a> | <a href="#" style="color: rgba(255, 255, 255, 0.6);">Términos y condiciones</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Button interactivity
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                console.log('Button clicked:', this.textContent);
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

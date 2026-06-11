@@ -111,28 +111,28 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(circle
 .feature-title{font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:.75rem;position:relative;z-index:1}
 .feature-desc{font-size:.9375rem;color:var(--text-secondary);line-height:1.7;position:relative;z-index:1}
 
-/* PRODUCTS BENTO */
+/* PRODUCTS GRID - FIXED */
 .products{padding:8rem 0;background:var(--bg-light)}
-.products-bento{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,300px);gap:1.5rem;margin-top:4rem}
-.product-tile{background:rgba(255,255,255,.03);backdrop-filter:var(--blur);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:all .4s;cursor:pointer}
-.product-tile:hover{transform:scale(1.02);border-color:rgba(0,255,157,.3)}
-.product-tile.large{grid-column:span 2;grid-row:span 2}
+.products-bento{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:4rem}
+.product-tile{background:rgba(255,255,255,.03);backdrop-filter:var(--blur);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:2rem;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:all .4s;cursor:pointer}
+.product-tile:hover{transform:translateY(-4px);border-color:rgba(0,255,157,.3);box-shadow:0 8px 32px rgba(0,255,157,.1)}
+.product-tile.large{grid-column:span 2}
 .product-tile.wide{grid-column:span 2}
 .product-glow{position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none}
 .product-tile:hover .product-glow{opacity:1}
 .product-glow.green{background:radial-gradient(circle at 50% 50%,rgba(0,255,157,.15) 0%,transparent 70%)}
 .product-glow.purple{background:radial-gradient(circle at 50% 50%,rgba(183,148,246,.15) 0%,transparent 70%)}
 .product-glow.blue{background:radial-gradient(circle at 50% 50%,rgba(79,209,255,.15) 0%,transparent 70%)}
-.product-category{font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-green);margin-bottom:1rem}
-.product-name{font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin-bottom:.75rem}
-.product-tile.large .product-name{font-size:2.25rem}
-.product-benefit{font-size:.875rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1.5rem}
-.product-tile.large .product-benefit{font-size:1rem}
-.product-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
-.tag{background:rgba(0,255,157,.1);border:1px solid rgba(0,255,157,.2);color:var(--accent-green);padding:.375rem .875rem;border-radius:100px;font-size:.625rem;font-weight:600;letter-spacing:.04em}
-.product-footer{display:flex;justify-content:space-between;align-items:center}
-.product-price{font-family:var(--font-display);font-size:1.75rem;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.product-add{width:48px;height:48px;border-radius:50%;background:var(--gradient-1);border:none;color:#0a0e0d;font-size:1.5rem;font-weight:300;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center}
+.product-category{font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-green);margin-bottom:.75rem}
+.product-name{font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:.5rem}
+.product-tile.large .product-name{font-size:1.75rem}
+.product-benefit{font-size:.8125rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem}
+.product-tile.large .product-benefit{font-size:.875rem}
+.product-tags{display:flex;flex-wrap:wrap;gap:.375rem;margin-bottom:1rem}
+.tag{background:rgba(0,255,157,.1);border:1px solid rgba(0,255,157,.2);color:var(--accent-green);padding:.25rem .75rem;border-radius:100px;font-size:.5625rem;font-weight:600;letter-spacing:.04em}
+.product-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:1rem;border-top:1px solid rgba(255,255,255,.06)}
+.product-price{font-family:var(--font-display);font-size:1.5rem;font-weight:800;background:var(--gradient-1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.product-add{width:44px;height:44px;border-radius:50%;background:var(--gradient-1);border:none;color:#0a0e0d;font-size:1.25rem;font-weight:300;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center}
 .product-add:hover{transform:scale(1.1) rotate(90deg)}
 
 /* SCIENCE SPLIT */
@@ -213,8 +213,8 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06)}
 
 /* RESPONSIVE */
 @media(max-width:1200px){
-.products-bento{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
-.product-tile.large,.product-tile.wide{grid-column:span 2;grid-row:span 1}
+.products-bento{grid-template-columns:repeat(2,1fr)}
+.product-tile.large,.product-tile.wide{grid-column:span 2}
 }
 @media(max-width:768px){
 .nav-inner{padding:0 1.5rem}

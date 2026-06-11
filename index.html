@@ -764,7 +764,150 @@
         .benefit-card:nth-child(2) { animation-delay: 0.2s; }
         .benefit-card:nth-child(3) { animation-delay: 0.3s; }
         .benefit-card:nth-child(4) { animation-delay: 0.4s; }
-    </style>
+    
+        /* Contact Form */
+        .contact-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e9 100%);
+            text-align: center;
+        }
+        .contact-section h2 {
+            color: var(--primary);
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        .contact-section > p {
+            color: var(--text-light);
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-form {
+            max-width: 550px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: #fafafa;
+            box-sizing: border-box;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 113, 69, 0.1);
+            background: white;
+        }
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 113, 69, 0.3);
+        }
+        .form-whatsapp {
+            margin-top: 20px;
+            padding: 16px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+        .form-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+        }
+        .form-divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+        .form-divider::before,
+        .form-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+        .form-divider span {
+            padding: 0 15px;
+        }
+        .form-success {
+            display: none;
+            padding: 30px;
+            text-align: center;
+        }
+        .form-success.show {
+            display: block;
+        }
+        .form-success .icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+        .form-success h3 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .form-success p {
+            color: var(--text-light);
+        }
+        @media (max-width: 600px) {
+            .contact-form {
+                padding: 25px 20px;
+            }
+            .contact-section h2 {
+                font-size: 28px;
+            }
+        }
+</style>
 </head>
 <body>
     <!-- Header -->
@@ -972,18 +1115,45 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section" id="contacto">
-        <div class="cta-content">
-            <h2>¿Listo para cambiar tu vida?</h2>
-            <p>Únete a miles de distribuidores en Colombia que están ganando dinero real vendiendo HGW.</p>
-            <div class="cta-buttons">
-                <button class="btn-white">Inscribirse como distribuidor</button>
-                <button class="btn-white">Contactar por WhatsApp</button>
+    <section class="contact-section" id="contacto">
+        <h2>📬 Contáctanos</h2>
+        <p>Déjanos tus datos y te contactamos para darte más información sobre HGW Natural Colombia</p>
+        
+        <div class="contact-form" id="contactForm">
+            <div class="form-success" id="formSuccess">
+                <div class="icon">✅</div>
+                <h3>¡Mensaje enviado!</h3>
+                <p>Te contactaremos pronto por WhatsApp o email. También puedes escribirnos directo:</p>
+                <a href="https://wa.me/573005551234?text=Hola%21+Quiero+m%C3%A1s+informaci%C3%B3n+sobre+HGW+Natural+Colombia" 
+                   class="form-whatsapp" style="margin-top: 20px;" target="_blank">💬 Hablar por WhatsApp ahora</a>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
+            <form id="contactFormFields" onsubmit="return handleContactForm(event)">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="tu@correo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">WhatsApp / Teléfono</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+57 300 000 0000" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" placeholder="Cuéntanos cómo podemos ayudarte..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">🚀 Enviar mensaje</button>
+                
+                <div class="form-divider"><span>O contáctanos directo</span></div>
+                
+                <a href="https://wa.me/573005551234?text=Hola%21+Quiero+m%C3%A1s+informaci%C3%B3n+sobre+HGW+Natural+Colombia" 
+                   class="form-whatsapp" target="_blank">💬 Escríbenos por WhatsApp</a>
+            </form>
+        </div>
+    </section><!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -1009,7 +1179,7 @@
                 <h3>Contacto</h3>
                 <ul>
                     <li><a href="tel:+573005551234">+57 300 555 1234</a></li>
-                    <li><a href="mailto:info@hgwcolombia.com">info@hgwcolombia.com</a></li>
+                    <li><a href="mailto:info.hgwnatural@gmail.com">info.hgwnatural@gmail.com</a></li>
                     <li><a href="#">Bogotá, Colombia</a></li>
                 </ul>
             </div>
@@ -1057,6 +1227,30 @@
             }
         });
     </script>
+
+    // Contact form handler
+    function handleContactForm(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        // Build WhatsApp message
+        const text = `*HGW Natural Colombia*%0A%0A*Nombre:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Teléfono:* ${encodeURIComponent(phone)}%0A*Mensaje:* ${encodeURIComponent(message || 'Quiero más información')}`;
+        
+        const waUrl = `https://wa.me/573005551234?text=${text}`;
+        
+        // Open WhatsApp
+        window.open(waUrl, '_blank');
+        
+        // Show success
+        document.getElementById('contactFormFields').style.display = 'none';
+        document.getElementById('formSuccess').classList.add('show');
+        
+        return false;
+    }
+
 </body>
 </html>
 /bin/bash: line 5: C:/Users/USER/.hermes/cache/terminal/hermes-snap-c7b9dc6e1216.sh: No such file or directory

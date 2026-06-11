@@ -217,16 +217,52 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06)}
 .product-tile.large,.product-tile.wide{grid-column:span 2}
 }
 @media(max-width:768px){
-.nav-inner{padding:0 1.5rem}
+.nav-inner{padding:0 1.25rem}
 .nav-menu a:not(.nav-cta){display:none}
-.hero-content{padding:8rem 1.5rem 4rem}
-.container{padding:0 1.5rem}
-.hero-stats{grid-template-columns:repeat(2,1fr)}
+.hero-content{padding:6rem 1.25rem 3rem}
+.hero h1{font-size:clamp(2rem,9vw,3rem)}
+.hero-desc{font-size:1rem;margin-bottom:2rem}
+.hero-actions{margin-bottom:3rem}
+.hero-stats{gap:1rem}
+.stat-card{padding:1.25rem 1rem}
+.stat-number{font-size:1.75rem}
+.btn-primary,.btn-outline{padding:.875rem 1.75rem;font-size:.75rem}
+.contact-form-inner .btn-primary{font-size:.8125rem;padding:.75rem 1.5rem}
+.container{padding:0 1.25rem}
+section{padding:4rem 0}
+.section-title{font-size:clamp(1.5rem,6vw,2rem)}
 .features-grid{grid-template-columns:1fr}
-.science-split{grid-template-columns:1fr}
+.feature-card{padding:2rem}
 .products-bento{grid-template-columns:1fr}
-.testimonial{min-width:300px}
-.footer-grid{grid-template-columns:1fr}
+.product-tile.large,.product-tile.wide{grid-column:span 1}
+.product-tile{padding:1.5rem}
+.product-name{font-size:1.125rem}
+.science-split{grid-template-columns:1fr;gap:2rem}
+.scientist-card{padding:2rem}
+.scientist-avatar{width:80px;height:80px;font-size:1.75rem}
+.testimonials-track{gap:1rem}
+.testimonial{min-width:260px;padding:1.5rem}
+.testimonial::before{font-size:3rem}
+.cta-box{padding:3rem 1.5rem}
+.cta-box h2{font-size:clamp(1.5rem,5vw,2rem)}
+.contact-form-inner{padding:2rem 1.25rem}
+.contact-section{padding:4rem 0}
+.form-success h3{font-size:1.25rem}
+.footer-grid{grid-template-columns:1fr;gap:2rem}
+.hero-stats{grid-template-columns:repeat(2,1fr)}
+.certifications{grid-template-columns:repeat(2,1fr)}
+.ingredients-flex{gap:1.5rem}
+}
+@media(max-width:480px){
+.hero h1{font-size:1.75rem}
+.hero-tag{font-size:.625rem}
+.hero-badge{font-size:.5625rem;padding:.5rem 1rem}
+.stat-number{font-size:1.5rem}
+.hero-stats{grid-template-columns:repeat(2,1fr);gap:.75rem}
+.testimonial{min-width:220px}
+.cert-badges{gap:.5rem}
+.cert-badge{font-size:.5625rem;padding:.375rem 1rem}
+.contact-form-inner{padding:1.5rem 1rem}
 }
 </style>
 </head>

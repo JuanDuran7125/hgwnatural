@@ -80,14 +80,32 @@
     "name": "HGW Natural"
   },
   "category": "Alimentos Funcionales",
-  "image": "https://hgwnatural.com/images/dulces-arandano-og.jpg",
+  "image": "https://hgwnatural.com/assets/images/dulces-arandano.webp",
   "offers": {
     "@type": "Offer",
     "price": "24000",
     "priceCurrency": "COP",
     "availability": "https://schema.org/InStock",
     "url": "https://hgwnatural.com/pages/dulces-de-arandano",
-    "priceValidUntil": "2027-12-31"
+    "description": "Enviamos a toda Colombia. Pago contraentrega disponible.",
+    "priceValidUntil": "2027-12-31",
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "CO"
+      },
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": "10000",
+        "currency": "COP"
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "CO",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+    }
   },
   "nutrition": {
     "@type": "NutritionInformation",

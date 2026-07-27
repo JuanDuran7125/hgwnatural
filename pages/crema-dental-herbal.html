@@ -60,6 +60,7 @@
     "@type": "Offer",
     "price": "30000",
     "priceCurrency": "COP",
+    "validFrom": "2026-07-01",
     "priceValidUntil": "2026-12-31",
     "availability": "https://schema.org/InStock",
     "url": "https://hgwnatural.com/pages/crema-dental-herbal",
@@ -78,6 +79,21 @@
         "@type": "MonetaryAmount",
         "value": "10000",
         "currency": "COP"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 5,
+          "unitCode": "DAY"
+        }
       }
     },
     "hasMerchantReturnPolicy": {

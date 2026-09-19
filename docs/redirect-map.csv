@@ -1,0 +1,17 @@
+origen,destino,tipo,motivo,estado
+/categoria/alimentos-funcionales,/pages/dulces-de-arandano,enlace_interno,Ruta inexistente en footer viejo,APPLIED
+/categoria/suplementos,/pages/productos-hgw,enlace_interno,Ruta inexistente,APPLIED
+/categoria/cuidado-personal,/pages/productos-hgw,enlace_interno,Ruta inexistente,APPLIED
+/categoria/turmalina,/pages/ciencia-hgw,enlace_interno,Ruta inexistente,APPLIED
+/categoria/emprendedores,/pages/oportunidad,enlace_interno,Ruta inexistente,APPLIED
+/cuidado-personal,/pages/productos-hgw,enlace_interno,Ruta inexistente,APPLIED
+/turmalina,/pages/ciencia-hgw,enlace_interno,Ruta inexistente,APPLIED
+/patentes,/pages/ciencia-hgw,enlace_interno,Ruta inexistente,APPLIED
+/prensa,/pages/ciencia-hgw,enlace_interno,Ruta inexistente,APPLIED
+/faq,/pages/preguntas-frecuentes-hgw,enlace_interno,Ruta inexistente,APPLIED
+/contacto,/pages/preguntas-frecuentes-hgw,enlace_interno,Ruta inexistente,APPLIED
+/ciudades,/pages/productos-hgw,enlace_interno,Ruta inexistente,APPLIED
+/pages/ciudad/productos-hgw-bogota,/pages/productos-bogota,canonical_noindex,Duplicado 98%,APPLIED
+/pages/ciudad/productos-hgw-medellin,/pages/productos-medellin,canonical_noindex,Duplicado 97%,APPLIED
+/pages/oportunidad-colombia,/pages/oportunidad,evaluar,Duplicado casi total,PENDIENTE
+/pages/ciudad/oportunidad-hgw-colombia,/pages/oportunidad,evaluar,Duplicado casi total,PENDIENTE

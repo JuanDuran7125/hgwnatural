@@ -25,3 +25,15 @@
 | Bogotá/Medellín consolidadas | noindex + canonical |
 | 6 ciudades diferenciadas (secciones locales) | similitud 61%→49% |
 | Hub de recursos (blog/FAQ/ciudades) | +enlaces entrantes |
+
+## 2026-09-19 — Fase 3-5: correcciones de claims aplicadas (branch feature/hgw-natural-v2)
+
+| Cambio | Archivo(s) | Motivo | Resultado |
+|--------|-----------|--------|-----------|
+| Schema Product+Review+AggregateRating retirado | pages/testimonios-hgw.html | Reviews/ratings inventados = violación de política de Google | Reemplazado por WebPage schema |
+| 0 archivos con AggregateRating/Review | todo el sitio | Verificado | ✅ |
+| Testimonios con cifras de ingresos reescritos | oportunidad.html, oportunidad-colombia.html, ciudad/oportunidad-hgw-colombia.html, testimonios-hgw.html | Riesgo regulatorio (Superintendencia de Sociedades) | Lenguaje cualitativo |
+| Cifras de ingresos concretas retiradas | oportunidad*.html, blog/como-ser-distribuidor | No verificables | Ejemplos ilustrativos sin cifras |
+| Aviso de ingresos añadido | 4 páginas de negocio | Obligación de no prometer ingresos | Disclaimer visible |
+| Claims antimicrobianos/inmunológicos reformulados | index, ciencia-hgw, crema-dental, dulces, productos-hgw, protectores, blog×2 | YMYL — requieren registro sanitario/evidencia | Lenguaje de bienestar/frescura |
+| 0 términos de riesgo | todo el sitio | Verificado | ✅ |

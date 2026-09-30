@@ -157,7 +157,7 @@
       "name": "¿Los productos HGW son originales y con respaldo científico?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí, todos los productos HGW cuentan con más de 300 patentes internacionales, fabricados bajo estándares FDA, ISO, GMP y Kosher. Somos distribuidores oficiales de Health Green World en Colombia."
+        "text": "Todos los productos HGW se elaboran con ingredientes naturales y tecnología de turmalina. Para datos de fabricación y certificaciones, consulta con un asesor HGW."
       }
     },
     {
@@ -423,7 +423,7 @@ section{padding:4rem 0}
     <div class="hero-badge">📍 Envíos a Medellín y Área Metropolitana</div>
     <h1>Productos <span class="gradient-text">HGW</span><br>en <span class="gradient-text">Medellín</span></h1>
     <p class="hero-desc">
-      Recibe en tu casa los mejores productos HGW — Crema Dental Herbal, Dulces de Arándano y Jabón Turmalina — con envío rápido a El Poblado, Laureles, Envigado, Itagüí, Bello, Sabaneta y más. Productos con respaldo científico y más de 300 patentes internacionales.
+      Recibe en tu casa los mejores productos HGW — Crema Dental Herbal, Dulces de Arándano y Jabón Turmalina — con envío rápido a El Poblado, Laureles, Envigado, Itagüí, Bello, Sabaneta y más. Productos con respaldo científico y tecnología propia basada en turmalina.
     </p>
     <div class="hero-actions">
       <a href="https://wa.me/573016450378?text=Quiero%20productos%20HGW%20en%20Medell%C3%ADn" class="btn-whatsapp" target="_blank" rel="noopener">
@@ -439,7 +439,7 @@ section{padding:4rem 0}
       </div>
       <div class="stat-card">
         <div class="stat-number">300+</div>
-        <div class="stat-label">Patentes internacionales</div>
+        <div class="stat-label">Tecnología internacional</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">10</div>
@@ -555,7 +555,7 @@ section{padding:4rem 0}
       <div class="benefit-card reveal reveal-delay-2">
         <div class="benefit-icon purple">🔬</div>
         <h3 class="benefit-title">Productos con ciencia</h3>
-        <p class="benefit-desc">Más de 300 patentes internacionales respaldan cada fórmula. Fabricados bajo estándares FDA, ISO, GMP y Kosher.</p>
+        <p class="benefit-desc">Productos elaborados con ingredientes naturales y tecnología de turmalina.</p>
       </div>
       <div class="benefit-card reveal reveal-delay-3">
         <div class="benefit-icon blue">🤝</div>
@@ -631,7 +631,7 @@ section{padding:4rem 0}
           <span class="faq-toggle">+</span>
         </div>
         <div class="faq-answer">
-          Sí, todos los productos HGW cuentan con más de 300 patentes internacionales, fabricados bajo estándares FDA, ISO, GMP y Kosher. Somos distribuidores oficiales de Health Green World en Colombia.
+          Todos los productos HGW se elaboran con ingredientes naturales y tecnología de turmalina. Para datos de fabricación y certificaciones, consulta con un asesor HGW.
         </div>
       </div>
       <div class="faq-item">
@@ -670,7 +670,7 @@ section{padding:4rem 0}
     <div class="footer-grid">
       <div class="footer-brand">
         <h4>HGW</h4>
-        <p>Health Green World Colombia — Bienestar científico con productos naturales. Más de 30 años transformando la fitoterapia en soluciones científicas respaldadas por 300+ patentes internacionales.</p>
+        <p>Health Green World Colombia — Bienestar científico con productos naturales. Más de Años de trabajo transformando la fitoterapia en soluciones científicas respaldadas por tecnología propia basada en turmalina.</p>
         <div class="social-links">
           <a href="https://www.facebook.com/HealthGreenWorldColombia/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
           <a href="https://www.instagram.com/hgwcolombiaoficial/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
@@ -702,7 +702,7 @@ section{padding:4rem 0}
         <a href="/pages/preguntas-frecuentes-hgw">FAQ</a>
       </div>
     </div>
-    <div class="footer-bottom">
+    <div style="grid-column:1/-1;display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08)"><a href="/privacidad" style="color:var(--text-muted);font-size:.8125rem;text-decoration:none">Política de Privacidad</a><a href="/cookies" style="color:var(--text-muted);font-size:.8125rem;text-decoration:none">Política de Cookies</a><a href="/glosario" style="color:var(--text-muted);font-size:.8125rem;text-decoration:none">Glosario</a></div><div class="footer-bottom">
       <span>&copy; 2026 HGW Colombia — Health Green World. Todos los derechos reservados.</span>
       <span>Medellín, Antioquia — Colombia</span>
     </div>
@@ -729,6 +729,30 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
+<!-- AVISO DE COOKIES -->
+<div id="hgw-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(10,14,20,.97);border-top:1px solid rgba(0,255,157,.25);backdrop-filter:blur(12px);padding:1.15rem 1.5rem">
+<div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between">
+<p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;margin:0;flex:1 1 340px">Usamos cookies analíticas para entender cómo se usa el sitio. Puedes aceptarlas o rechazarlas. <a href="/cookies" style="color:var(--accent-green)">Más información</a></p>
+<div style="display:flex;gap:.6rem;flex-shrink:0">
+<button id="hgw-cookie-reject" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--text-secondary);padding:.6rem 1.15rem;border-radius:100px;font-size:.8125rem;font-weight:600;cursor:pointer">Rechazar</button>
+<button id="hgw-cookie-accept" style="background:var(--accent-green);border:none;color:#06120c;padding:.6rem 1.35rem;border-radius:100px;font-size:.8125rem;font-weight:700;cursor:pointer">Aceptar</button>
+</div></div></div>
+<script>
+(function(){
+  var KEY='hgw_cookie_consent';
+  var choice=null;
+  try{choice=localStorage.getItem(KEY);}catch(e){}
+  var b=document.getElementById('hgw-cookie-banner');
+  if(!choice){b.style.display='block';}
+  function set(v){
+    try{localStorage.setItem(KEY,v);}catch(e){}
+    b.style.display='none';
+    if(v==='accepted' && typeof window.hgwLoadAnalytics==='function'){window.hgwLoadAnalytics();}
+  }
+  document.getElementById('hgw-cookie-accept').addEventListener('click',function(){set('accepted');});
+  document.getElementById('hgw-cookie-reject').addEventListener('click',function(){set('rejected');});
+})();
+</script>
 <script src="/assets/js/analytics-config.js"></script>
 <script src="/assets/js/analytics.js" defer></script>
 </body>

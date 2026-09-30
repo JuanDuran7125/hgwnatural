@@ -177,7 +177,7 @@
       "name": "¿Necesito experiencia en ventas?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No, no necesitas experiencia previa en ventas. HGW está diseñado para que cualquier persona pueda comenzar. Nuestros productos se venden solos por su calidad y respaldo científico. Además recibirás capacitación completa y acompañamiento continuo de tu patrocinador. Lo más importante son las ganas de aprender y emprender."
+        "text": "No, no necesitas experiencia previa en ventas. HGW está diseñado para que cualquier persona pueda comenzar. No necesitas experiencia previa: recibirás capacitación completa y acompañamiento continuo de tu patrocinador. Lo más importante son las ganas de aprender y emprender."
       }
     },
     {
@@ -349,7 +349,7 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 <a href="https://hgwnatural.com" class="logo">HGW</a>
 <div class="nav-menu">
 <a href="/pages/productos-hgw">Productos</a>
-<a href="/pages/ciencia-hgw">Ciencia</a>
+<a href="/pages/ciencia-hgw">Ciencia</a><a href="/paises/">Países</a>
 <a href="/pages/testimonios-hgw">Testimonios</a>
 <a href="/pages/oportunidad">Oportunidad</a>
 <a href="/pages/preguntas-frecuentes-hgw" style="color:var(--accent-green)">FAQ</a>
@@ -557,7 +557,7 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 <span class="faq-icon">+</span>
 </label>
 <div class="faq-answer">
-<p><strong>No</strong>, no necesitas experiencia previa en ventas. HGW está diseñado para que cualquier persona pueda comenzar. Nuestros productos se venden solos por su calidad y respaldo científico. Además recibirás capacitación completa y acompañamiento continuo de tu patrocinador. Lo más importante son las ganas de aprender y emprender.</p>
+<p><strong>No</strong>, no necesitas experiencia previa en ventas. HGW está diseñado para que cualquier persona pueda comenzar. No necesitas experiencia previa: recibirás capacitación completa y acompañamiento continuo de tu patrocinador. Lo más importante son las ganas de aprender y emprender.</p>
 </div>
 </div>
 
@@ -615,7 +615,7 @@ Escríbenos a WhatsApp →
 <div class="footer-grid">
 <div class="footer-brand">
 <h4>HGW Colombia</h4>
-<p>Productos naturales con respaldo científico. Distribuidores autorizados de Health Green World en Colombia. 300+ patentes, 30 años de investigación.</p>
+<p>Productos naturales con respaldo científico. Distribuidores autorizados de Health Green World en Colombia. tecnología de turmalina, trayectoria internacional.</p>
 <div class="footer-social">
 <a href="https://wa.me/573016450378" target="_blank" rel="noopener">WA</a>
 <a href="https://www.facebook.com/HealthGreenWorldColombia/" target="_blank" rel="noopener">FB</a>
@@ -647,7 +647,7 @@ Escríbenos a WhatsApp →
 <a href="/pages/productos-medellin">Medellín</a>
 </div>
 </div>
-<div class="footer-bottom">
+<div style="grid-column:1/-1;display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08)"><a href="/privacidad" style="color:var(--text-muted);font-size:.8125rem;text-decoration:none">Política de Privacidad</a><a href="/cookies" style="color:var(--text-muted);font-size:.8125rem;text-decoration:none">Política de Cookies</a><a href="/glosario" style="color:var(--text-muted);font-size:.8125rem;text-decoration:none">Glosario</a></div><div class="footer-bottom">
 <span>© 2026 HGW Colombia. Todos los derechos reservados.</span>
 <span>Producto coadyuvante del bienestar.</span>
 </div>
@@ -669,6 +669,30 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
 a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})
 });
+</script>
+<!-- AVISO DE COOKIES -->
+<div id="hgw-cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(10,14,20,.97);border-top:1px solid rgba(0,255,157,.25);backdrop-filter:blur(12px);padding:1.15rem 1.5rem">
+<div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between">
+<p style="color:var(--text-secondary);font-size:.875rem;line-height:1.6;margin:0;flex:1 1 340px">Usamos cookies analíticas para entender cómo se usa el sitio. Puedes aceptarlas o rechazarlas. <a href="/cookies" style="color:var(--accent-green)">Más información</a></p>
+<div style="display:flex;gap:.6rem;flex-shrink:0">
+<button id="hgw-cookie-reject" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--text-secondary);padding:.6rem 1.15rem;border-radius:100px;font-size:.8125rem;font-weight:600;cursor:pointer">Rechazar</button>
+<button id="hgw-cookie-accept" style="background:var(--accent-green);border:none;color:#06120c;padding:.6rem 1.35rem;border-radius:100px;font-size:.8125rem;font-weight:700;cursor:pointer">Aceptar</button>
+</div></div></div>
+<script>
+(function(){
+  var KEY='hgw_cookie_consent';
+  var choice=null;
+  try{choice=localStorage.getItem(KEY);}catch(e){}
+  var b=document.getElementById('hgw-cookie-banner');
+  if(!choice){b.style.display='block';}
+  function set(v){
+    try{localStorage.setItem(KEY,v);}catch(e){}
+    b.style.display='none';
+    if(v==='accepted' && typeof window.hgwLoadAnalytics==='function'){window.hgwLoadAnalytics();}
+  }
+  document.getElementById('hgw-cookie-accept').addEventListener('click',function(){set('accepted');});
+  document.getElementById('hgw-cookie-reject').addEventListener('click',function(){set('rejected');});
+})();
 </script>
 <script src="/assets/js/analytics-config.js"></script>
 <script src="/assets/js/analytics.js" defer></script>

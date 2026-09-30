@@ -37,3 +37,46 @@
 | Aviso de ingresos añadido | 4 páginas de negocio | Obligación de no prometer ingresos | Disclaimer visible |
 | Claims antimicrobianos/inmunológicos reformulados | index, ciencia-hgw, crema-dental, dulces, productos-hgw, protectores, blog×2 | YMYL — requieren registro sanitario/evidencia | Lenguaje de bienestar/frescura |
 | 0 términos de riesgo | todo el sitio | Verificado | ✅ |
+
+## 2026-09-30 — FASE B + C + D + E (implementación aprobada por el dueño)
+
+### FASE B — Saneamiento legal (BLOQUEANTE)
+| Cambio | Alcance | Verificación |
+|--------|---------|--------------|
+| "productos que se venden solos" eliminado | 7 ocurrencias / 5 archivos | 0 restantes |
+| "sin inversión, sin riesgos" eliminado | 2 páginas | 0 restantes |
+| "libertad financiera" (H1) reformulado | 4 ocurrencias / 3 páginas | 0 restantes |
+| "desintoxicar la piel", "regeneración de la rodopsina" | 5 ocurrencias | 0 restantes |
+| "300+ patentes" (121), "40+ países" (40), "30 años" (40) reformulados | ~200 ocurrencias | 0 restantes |
+| Certificaciones FDA/ISO/GMP/Kosher/Halal/CQC retiradas | 21+20+20+13+7+1 | 0 restantes |
+| "Dra. Deming Li" + credenciales (Ph.D. Cornell) retiradas | 6 ocurrencias | 0 restantes |
+| "Dr. Henry Chang" retirado | 2 ocurrencias | 0 restantes |
+| **Política de Privacidad** creada | /privacidad (Ley 1581/2012) | nueva |
+| **Política de Cookies** creada | /cookies | nueva |
+| **Aviso de consentimiento de cookies** | 31 páginas | sin analítica hasta aceptar |
+| 2 páginas duplicadas al 99% → redirección | ciudad/productos-hgw-{bogota,medellin} | consolidadas |
+| 2 duplicados al 96% → canonical + noindex | oportunidad-colombia, ciudad/oportunidad-hgw-colombia | consolidadas |
+| 6 páginas de ciudad diferenciadas | +bloques locales únicos | solape 70%→64% |
+| Títulos/metas sobredimensionados corregidos | 5 páginas de ciudad | ≤60 / ≤160 |
+
+### FASE C — Arquitectura LATAM
+- **`/paises/`** hub creado (12 mercados clase A verificados en la plataforma oficial).
+- **12 páginas país** creadas: colombia, peru, mexico, ecuador, bolivia, chile, panama, costa-rica, guatemala, el-salvador, paraguay, republica-dominicana.
+- **Solape de contenido entre páginas país: media 36.1%, 65/66 pares ≤40%** (objetivo del brief cumplido).
+- **4 países descartados** por falta de evidencia: Argentina, Uruguay, Honduras, Nicaragua. Venezuela pendiente.
+- **España bloqueada** (FASE 2 UE).
+
+### FASE D — Productos globales
+- **`/productos/`** hub creado con la separación PRODUCTO ≠ PAÍS exigida por el brief.
+- Bloque "Qué afirmamos y qué no" (transparencia de claims).
+- Selector de país en el hub.
+
+### FASE E — AEO / GEO / Schema
+- **Selector de país GEO** por zona horaria, sin bloqueo ni redirección permanente (32 zonas mapeadas).
+- **Schema**: WebPage + Organization(areaServed) + BreadcrumbList + FAQPage en cada página país; CollectionPage + ItemList en hubs.
+- **FAQ con formato** respuesta directa + fuente + fecha en todas las páginas nuevas.
+- **Fecha de actualización visible** y bloque de fuentes en cada página país.
+- Evento GA4 `country_selected` implementado.
+
+### Validación final
+- 45 páginas HTML · **0 JSON-LD inválidos** · **0 enlaces internos rotos** · **0 títulos >62 chars** · **0 términos prohibidos** · analytics y aviso de cookies en todas las páginas.

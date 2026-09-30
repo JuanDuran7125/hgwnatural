@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /docs/
+Disallow: /*.md$
+Disallow: /docs/claims-raw.json
 
 Sitemap: https://hgwnatural.com/sitemap.xml

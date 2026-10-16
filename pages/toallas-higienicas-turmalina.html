@@ -425,7 +425,34 @@ section{padding:4rem 0}
 </head>
 <body>
 
-<nav class="nav" id="nav">
+<!-- SELECTOR DE PAÍS (sugerencia, nunca bloquea) -->
+<div id="hgw-geo" style="display:none;position:relative;z-index:900;margin-top:85px;background:rgba(0,255,157,.06);border-bottom:1px solid rgba(0,255,157,.2);padding:.85rem 1.5rem">
+<div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.85rem;align-items:center;justify-content:space-between">
+<p id="hgw-geo-text" style="color:var(--text-secondary);font-size:.875rem;margin:0;flex:1 1 300px"></p>
+<div style="display:flex;gap:.6rem;flex-shrink:0">
+<button id="hgw-geo-yes" style="background:var(--accent-green);border:none;color:#06120c;padding:.45rem 1.1rem;border-radius:100px;font-size:.8125rem;font-weight:700;cursor:pointer">Ver</button>
+<button id="hgw-geo-no" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--text-secondary);padding:.45rem 1.1rem;border-radius:100px;font-size:.8125rem;cursor:pointer">Seguir en global</button>
+</div></div></div>
+<script>
+(function(){
+  var MAP={"America/Bogota":["colombia","Colombia"],"America/Lima":["peru","Perú"],"America/Mexico_City":["mexico","México"],
+  "America/Guayaquil":["ecuador","Ecuador"],"America/La_Paz":["bolivia","Bolivia"],"America/Santiago":["chile","Chile"],
+  "America/Panama":["panama","Panamá"],"America/Costa_Rica":["costa-rica","Costa Rica"],"America/Guatemala":["guatemala","Guatemala"],
+  "America/El_Salvador":["el-salvador","El Salvador"],"America/Asuncion":["paraguay","Paraguay"],
+  "America/Santo_Domingo":["republica-dominicana","República Dominicana"]};
+  try{ if(localStorage.getItem('hgw_country_choice')) return; }catch(e){}
+  var tz=""; try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){}
+  var hit=MAP[tz]; if(!hit) return;
+  var g=document.getElementById('hgw-geo');
+  document.getElementById('hgw-geo-text').innerHTML='Parece que estás en <strong>'+hit[1]+'</strong>. ¿Quieres ver los productos y la información de '+hit[1]+'?';
+  g.style.display='block';
+  function remember(){ try{localStorage.setItem('hgw_country_choice',hit[0]);}catch(e){} }
+  document.getElementById('hgw-geo-yes').onclick=function(){
+    if(window.hgwTrack)hgwTrack('country_selected',{country:hit[0]});
+    remember(); location.href='/paises/'+hit[0]+'/';};
+  document.getElementById('hgw-geo-no').onclick=function(){ remember(); g.style.display='none'; };
+})();
+</script><nav class="nav" id="nav">
 <div class="nav-inner">
 <a href="https://hgwnatural.com" class="logo">HGW</a>
 <div class="nav-menu">
@@ -808,6 +835,12 @@ section{padding:4rem 0}
 </section>
 
 <!-- FOOTER -->
+<!-- HGW-RELACIONADOS -->
+<section class="section" style="padding-top:0"><div class="container" style="max-width:900px">
+<div class="section-header"><span class="section-label">Disponibilidad</span><h2 class="section-title">Disponible en estos mercados</h2></div>
+<div style="display:flex;flex-wrap:wrap;gap:.6rem"><a href="/paises/colombia/" data-country="colombia" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇨🇴 Colombia</a><a href="/paises/peru/" data-country="peru" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇵🇪 Perú</a><a href="/paises/mexico/" data-country="mexico" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇲🇽 México</a><a href="/paises/ecuador/" data-country="ecuador" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇪🇨 Ecuador</a><a href="/paises/bolivia/" data-country="bolivia" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇧🇴 Bolivia</a><a href="/paises/chile/" data-country="chile" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇨🇱 Chile</a><a href="/paises/panama/" data-country="panama" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇵🇦 Panamá</a><a href="/paises/costa-rica/" data-country="costa-rica" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇨🇷 Costa Rica</a><a href="/paises/guatemala/" data-country="guatemala" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇬🇹 Guatemala</a><a href="/paises/el-salvador/" data-country="el-salvador" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇸🇻 El Salvador</a><a href="/paises/paraguay/" data-country="paraguay" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇵🇾 Paraguay</a><a href="/paises/republica-dominicana/" data-country="republica-dominicana" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.45rem 1rem;text-decoration:none;color:var(--text-secondary);font-size:.8125rem">🇩🇴 República Dominicana</a></div>
+<p style="color:var(--text-muted);font-size:.8125rem;line-height:1.7;margin-top:1.25rem">La información del producto es general. Precio, envío y atención se confirman en la <a href="/paises/" style="color:var(--accent-green)">página de tu país</a>.</p>
+</div></section>
 <footer>
 <div class="container">
 <div class="footer-grid">

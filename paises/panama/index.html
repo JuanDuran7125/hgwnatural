@@ -245,6 +245,30 @@
     "@type": "Answer",
     "text": "Sí, absolutamente. Como distribuidor HGW recibirás: 1) Capacitación inicial sobre productos y técnicas de venta, 2) Material digital descargable con catálogos, presentaciones y guías, 3) Acompañamiento permanente de tu línea de apoyo, 4) Entrenamiento en manejo de redes sociales y marketing digital, 5) Acceso a eventos y capacitaciones grupales. Te ayudamos a construir tu negocio paso a paso."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Se puede pagar contra entrega en Panamá?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "En varias zonas de la capital está disponible. Al escribirnos por WhatsApp te confirmamos las opciones de pago para tu sector específico."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuánto tarda un envío en Panamá?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "En Ciudad de Panamá suele ser rápido; hacia provincias como Chiriquí o Bocas del Toro el plazo es mayor. Te damos el estimado antes de confirmar."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Se puede enviar a Bocas del Toro o Chiriquí?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. Son las provincias con plazos más largos por distancia y, en el caso de Bocas del Toro, por el cruce marítimo. Consulta tu caso y te damos el estimado."
+   }
   }
  ]
 }
@@ -417,8 +441,35 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 @media(max-width:768px){.hero-content{padding:8rem 1.25rem 3rem!important}.container{padding:0 1.25rem}}
 </style>
 </head>
-<body>
-<nav class="nav" id="nav"><div class="nav-inner"><a href="/" class="logo">HGW</a>
+<body><!-- HGW-ADD2 --><!-- HGW-ADD -->
+<!-- SELECTOR DE PAÍS (sugerencia, nunca bloquea) -->
+<div id="hgw-geo" style="display:none;position:relative;z-index:900;margin-top:85px;background:rgba(0,255,157,.06);border-bottom:1px solid rgba(0,255,157,.2);padding:.85rem 1.5rem">
+<div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.85rem;align-items:center;justify-content:space-between">
+<p id="hgw-geo-text" style="color:var(--text-secondary);font-size:.875rem;margin:0;flex:1 1 300px"></p>
+<div style="display:flex;gap:.6rem;flex-shrink:0">
+<button id="hgw-geo-yes" style="background:var(--accent-green);border:none;color:#06120c;padding:.45rem 1.1rem;border-radius:100px;font-size:.8125rem;font-weight:700;cursor:pointer">Ver</button>
+<button id="hgw-geo-no" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--text-secondary);padding:.45rem 1.1rem;border-radius:100px;font-size:.8125rem;cursor:pointer">Seguir en global</button>
+</div></div></div>
+<script>
+(function(){
+  var MAP={"America/Bogota":["colombia","Colombia"],"America/Lima":["peru","Perú"],"America/Mexico_City":["mexico","México"],
+  "America/Guayaquil":["ecuador","Ecuador"],"America/La_Paz":["bolivia","Bolivia"],"America/Santiago":["chile","Chile"],
+  "America/Panama":["panama","Panamá"],"America/Costa_Rica":["costa-rica","Costa Rica"],"America/Guatemala":["guatemala","Guatemala"],
+  "America/El_Salvador":["el-salvador","El Salvador"],"America/Asuncion":["paraguay","Paraguay"],
+  "America/Santo_Domingo":["republica-dominicana","República Dominicana"]};
+  try{ if(localStorage.getItem('hgw_country_choice')) return; }catch(e){}
+  var tz=""; try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){}
+  var hit=MAP[tz]; if(!hit) return;
+  var g=document.getElementById('hgw-geo');
+  document.getElementById('hgw-geo-text').innerHTML='Parece que estás en <strong>'+hit[1]+'</strong>. ¿Quieres ver los productos y la información de '+hit[1]+'?';
+  g.style.display='block';
+  function remember(){ try{localStorage.setItem('hgw_country_choice',hit[0]);}catch(e){} }
+  document.getElementById('hgw-geo-yes').onclick=function(){
+    if(window.hgwTrack)hgwTrack('country_selected',{country:hit[0]});
+    remember(); location.href='/paises/'+hit[0]+'/';};
+  document.getElementById('hgw-geo-no').onclick=function(){ remember(); g.style.display='none'; };
+})();
+</script><nav class="nav" id="nav"><div class="nav-inner"><a href="/" class="logo">HGW</a>
 <div class="nav-menu"><a href="/productos/">Productos</a><a href="/pages/ciencia-hgw">Ciencia</a><a href="/paises/">Países</a>
 <a href="/pages/oportunidad">Negocio</a><a href="https://wa.me/573016450378?text=Hola%2C+vengo+de+hgwnatural.com+%E2%80%94+Quiero+informaci%C3%B3n+de+productos+HGW+en+Panam%C3%A1" class="nav-cta">WhatsApp</a></div></div></nav>
 <section class="hero" style="min-height:38vh"><div class="hero-grid"></div>
@@ -447,6 +498,10 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
 <p style="color:var(--text-secondary);line-height:1.85;font-size:1rem;margin:0">Un apunte sobre la economía panameña: el país tiene una de las rentas por habitante más altas de América Latina, impulsada por el canal, la Zona Libre de Colón y el sector financiero. Eso se traduce en un consumidor con mayor capacidad de gasto en bienestar que el promedio regional.</p>
 </div></section>
+<section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<div class="section-header"><span class="section-label">Contexto local</span><h2 class="section-title">Por qué estos productos encajan en Panamá</h2></div>
+<p style="color:var(--text-secondary);line-height:1.85;font-size:1rem;margin:0">Panamá tiene un clima tropical con dos estaciones marcadas: la seca, de diciembre a abril, y la lluviosa, el resto del año. La humedad alta durante la mayor parte del año hace que la sensación de frescura y la higiene diaria sean relevantes en la rutina cotidiana, sobre todo en la capital, donde se concentra la mayor parte de la población.</p>
+</div></section>
 <div class="section-header"><span class="section-label">Cómo comprar</span><h2 class="section-title">Comprar en Panamá</h2></div>
 <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem">
 <p style="color:var(--text-secondary);line-height:1.85;font-size:.9375rem;margin:0 0 1rem">La compra se canaliza con distribuidores panameños. Ciudad de Panamá concentra la mayor parte del consumo.</p>
@@ -458,6 +513,14 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<div class="section-header"><span class="section-label">Entrega</span><h2 class="section-title">Cómo llega tu pedido en Panamá</h2></div>
+<p style="color:var(--text-secondary);line-height:1.85;font-size:1rem;margin:0">Panamá es un país pequeño con buena infraestructura vial, lo que permite cubrir buena parte del territorio desde la capital en plazos cortos. La Ciudad de Panamá concentra la demanda y es donde la entrega es más ágil.</p>
+</div></section>
+<section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<div class="section-header"><span class="section-label">Consultas frecuentes</span><h2 class="section-title">Preguntas que nos hacen desde Panamá</h2></div>
+<p style="color:var(--text-secondary);line-height:1.85;font-size:1rem;margin:0">Desde Panamá las consultas se centran en la entrega en provincias y en la forma de pago. Al ser un país con buen eje vial y territorio compacto, la capital y las cabeceras provinciales cercanas se cubren con rapidez; provincias como Chiriquí o Bocas del Toro requieren más tiempo. Tampoco hay conversión cambiaria relevante, porque la economía está dolarizada.</p>
+</div></section>
 <div class="section-header"><span class="section-label">Negocio</span><h2 class="section-title">Distribuidores en Panamá</h2></div>
 <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem">
 <p style="color:var(--text-secondary);line-height:1.85;font-size:.9375rem;margin:0 0 1rem">La oportunidad se consulta por WhatsApp, donde te explican cómo funciona en tu país.</p>
@@ -467,10 +530,16 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
 <div class="section-header"><span class="section-label">Preguntas frecuentes</span><h2 class="section-title">Dudas sobre HGW en Panamá</h2></div>
-<div style="display:grid;gap:1rem"><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Qué autoridad regula en Panamá?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">El MINSA (Ministerio de Salud), a través de la Dirección Nacional de Farmacia y Drogas, es la autoridad sanitaria para cosméticos, higiene y productos afines.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿En qué moneda se comercia en Panamá?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Panamá está dolarizada: circula el balboa pero la práctica comercial se hace en dólares estadounidenses.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Panamá sirve como centro de distribución regional?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Es un hub logístico reconocido de América Latina, con una de las principales zonas francas del continente.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Cómo contacto a la red en Panamá?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Escríbenos por WhatsApp: atendemos toda Latinoamérica desde una línea única.</p></div></div>
+<div style="display:grid;gap:1rem"><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Qué autoridad regula en Panamá?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">El MINSA (Ministerio de Salud), a través de la Dirección Nacional de Farmacia y Drogas, es la autoridad sanitaria para cosméticos, higiene y productos afines.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿En qué moneda se comercia en Panamá?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Panamá está dolarizada: circula el balboa pero la práctica comercial se hace en dólares estadounidenses.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Panamá sirve como centro de distribución regional?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Es un hub logístico reconocido de América Latina, con una de las principales zonas francas del continente.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Cómo contacto a la red en Panamá?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Escríbenos por WhatsApp: atendemos toda Latinoamérica desde una línea única.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Se puede pagar contra entrega en Panamá?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">En varias zonas de la capital está disponible. Al escribirnos por WhatsApp te confirmamos las opciones de pago para tu sector específico.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Cuánto tarda un envío en Panamá?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">En Ciudad de Panamá suele ser rápido; hacia provincias como Chiriquí o Bocas del Toro el plazo es mayor. Te damos el estimado antes de confirmar.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Se puede enviar a Bocas del Toro o Chiriquí?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Sí. Son las provincias con plazos más largos por distancia y, en el caso de Bocas del Toro, por el cruce marítimo. Consulta tu caso y te damos el estimado.</p></div></div>
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<!-- HGW-RELACIONADOS -->
+<section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<div class="section-header"><span class="section-label">Otros mercados</span><h2 class="section-title">HGW en otros países de Latinoamérica</h2></div>
+<div style="display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))"><a href="/paises/costa-rica/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇨🇷</span> HGW Costa Rica</a><a href="/paises/guatemala/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇬🇹</span> HGW Guatemala</a><a href="/paises/el-salvador/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇸🇻</span> HGW El Salvador</a><a href="/paises/paraguay/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇵🇾</span> HGW Paraguay</a><a href="/paises/republica-dominicana/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇩🇴</span> HGW República Dominicana</a></div>
+<p style="color:var(--text-muted);font-size:.8125rem;line-height:1.7;margin-top:1.25rem">Ver <a href="/paises/" style="color:var(--accent-green)">todos los mercados</a> donde HGW tiene catálogo activo, o el <a href="/productos/" style="color:var(--accent-green)">catálogo de productos</a>.</p>
+</div></section>
 <div style="border-left:2px solid rgba(0,255,157,.35);padding-left:1.25rem">
 <p style="color:var(--text-muted);font-size:.8125rem;line-height:1.7;margin:0 0 .4rem"><strong>Fuentes:</strong> selector de país de la plataforma oficial de HGW (www.healthgreenworld.com); información corporativa regional de la marca; normativa publicada por la autoridad sanitaria de cada país.</p>
 <p style="color:var(--text-muted);font-size:.8125rem;line-height:1.7;margin:0 0 .4rem"><strong>Actualizado:</strong> 30 de septiembre de 2026</p>
@@ -571,6 +640,30 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
     "acceptedAnswer": {
      "@type": "Answer",
      "text": "Escríbenos por WhatsApp: atendemos toda Latinoamérica desde una línea única."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "¿Se puede pagar contra entrega en Panamá?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "En varias zonas de la capital está disponible. Al escribirnos por WhatsApp te confirmamos las opciones de pago para tu sector específico."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "¿Cuánto tarda un envío en Panamá?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "En Ciudad de Panamá suele ser rápido; hacia provincias como Chiriquí o Bocas del Toro el plazo es mayor. Te damos el estimado antes de confirmar."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "¿Se puede enviar a Bocas del Toro o Chiriquí?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Sí. Son las provincias con plazos más largos por distancia y, en el caso de Bocas del Toro, por el cruce marítimo. Consulta tu caso y te damos el estimado."
     }
    }
   ]

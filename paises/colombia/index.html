@@ -245,6 +245,22 @@
     "@type": "Answer",
     "text": "Sí, absolutamente. Como distribuidor HGW recibirás: 1) Capacitación inicial sobre productos y técnicas de venta, 2) Material digital descargable con catálogos, presentaciones y guías, 3) Acompañamiento permanente de tu línea de apoyo, 4) Entrenamiento en manejo de redes sociales y marketing digital, 5) Acceso a eventos y capacitaciones grupales. Te ayudamos a construir tu negocio paso a paso."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué pasa si no estoy en casa cuando llega el pedido?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "La transportadora te contacta antes de entregar para acordar franja horaria. Si no logra entregar, reprograma para el siguiente día hábil sin costo adicional."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Los precios cambian según la ciudad?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. El precio del producto es el mismo en todo el país; lo que varía es el costo de envío, que depende de la ciudad y del tamaño del pedido."
+   }
   }
  ]
 }
@@ -417,8 +433,35 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 @media(max-width:768px){.hero-content{padding:8rem 1.25rem 3rem!important}.container{padding:0 1.25rem}}
 </style>
 </head>
-<body>
-<nav class="nav" id="nav"><div class="nav-inner"><a href="/" class="logo">HGW</a>
+<body><!-- HGW-ADD -->
+<!-- SELECTOR DE PAÍS (sugerencia, nunca bloquea) -->
+<div id="hgw-geo" style="display:none;position:relative;z-index:900;margin-top:85px;background:rgba(0,255,157,.06);border-bottom:1px solid rgba(0,255,157,.2);padding:.85rem 1.5rem">
+<div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.85rem;align-items:center;justify-content:space-between">
+<p id="hgw-geo-text" style="color:var(--text-secondary);font-size:.875rem;margin:0;flex:1 1 300px"></p>
+<div style="display:flex;gap:.6rem;flex-shrink:0">
+<button id="hgw-geo-yes" style="background:var(--accent-green);border:none;color:#06120c;padding:.45rem 1.1rem;border-radius:100px;font-size:.8125rem;font-weight:700;cursor:pointer">Ver</button>
+<button id="hgw-geo-no" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--text-secondary);padding:.45rem 1.1rem;border-radius:100px;font-size:.8125rem;cursor:pointer">Seguir en global</button>
+</div></div></div>
+<script>
+(function(){
+  var MAP={"America/Bogota":["colombia","Colombia"],"America/Lima":["peru","Perú"],"America/Mexico_City":["mexico","México"],
+  "America/Guayaquil":["ecuador","Ecuador"],"America/La_Paz":["bolivia","Bolivia"],"America/Santiago":["chile","Chile"],
+  "America/Panama":["panama","Panamá"],"America/Costa_Rica":["costa-rica","Costa Rica"],"America/Guatemala":["guatemala","Guatemala"],
+  "America/El_Salvador":["el-salvador","El Salvador"],"America/Asuncion":["paraguay","Paraguay"],
+  "America/Santo_Domingo":["republica-dominicana","República Dominicana"]};
+  try{ if(localStorage.getItem('hgw_country_choice')) return; }catch(e){}
+  var tz=""; try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){}
+  var hit=MAP[tz]; if(!hit) return;
+  var g=document.getElementById('hgw-geo');
+  document.getElementById('hgw-geo-text').innerHTML='Parece que estás en <strong>'+hit[1]+'</strong>. ¿Quieres ver los productos y la información de '+hit[1]+'?';
+  g.style.display='block';
+  function remember(){ try{localStorage.setItem('hgw_country_choice',hit[0]);}catch(e){} }
+  document.getElementById('hgw-geo-yes').onclick=function(){
+    if(window.hgwTrack)hgwTrack('country_selected',{country:hit[0]});
+    remember(); location.href='/paises/'+hit[0]+'/';};
+  document.getElementById('hgw-geo-no').onclick=function(){ remember(); g.style.display='none'; };
+})();
+</script><nav class="nav" id="nav"><div class="nav-inner"><a href="/" class="logo">HGW</a>
 <div class="nav-menu"><a href="/productos/">Productos</a><a href="/pages/ciencia-hgw">Ciencia</a><a href="/paises/">Países</a>
 <a href="/pages/oportunidad">Negocio</a><a href="https://wa.me/573016450378?text=Hola%2C+vengo+de+hgwnatural.com+%E2%80%94+Quiero+informaci%C3%B3n+de+productos+HGW+en+Colombia" class="nav-cta">WhatsApp</a></div></div></nav>
 <section class="hero" style="min-height:38vh"><div class="hero-grid"></div>
@@ -444,6 +487,10 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 <p style="color:var(--text-secondary);line-height:1.85;font-size:1rem;margin:0">Un dato práctico para Colombia: buena parte de la demanda de estos productos llega hoy a través de marketplaces y revendedores, no de las marcas. Eso significa que el comprador colombiano ya conoce la categoría, pero no siempre encuentra información verificable sobre el producto. Ahí es donde esta web intenta aportar valor.</p>
 </div></section>
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<div class="section-header"><span class="section-label">Contexto local</span><h2 class="section-title">Por qué estos productos encajan en Colombia</h2></div>
+<p style="color:var(--text-secondary);line-height:1.85;font-size:1rem;margin:0">Colombia tiene tres pisos térmicos en distancias cortas. Un pedido puede salir de Bogotá a 2.600 metros y llegar a Cartagena a nivel del mar en el mismo día de despacho. Esa variedad hace que la conversación sobre cuidado personal cambie según la ciudad: en la costa pesa más la frescura y la higiene diaria; en el interior, más la rutina de limpieza facial. Nuestros productos de uso diario encajan en ambos casos porque no dependen del clima para funcionar.</p>
+</div></section>
 <div class="section-header"><span class="section-label">Cómo comprar</span><h2 class="section-title">Comprar en Colombia</h2></div>
 <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem">
 <p style="color:var(--text-secondary);line-height:1.85;font-size:.9375rem;margin:0 0 1rem">En Colombia pedimos directamente por WhatsApp. Coordinamos el envío, confirmamos la dirección y en la mayoría de las ciudades principales hay pago contra entrega. Los tiempos habituales son de 24 a 48 horas en ciudades principales y de 3 a 5 días en municipios.</p>
@@ -455,6 +502,10 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<div class="section-header"><span class="section-label">Entrega</span><h2 class="section-title">Cómo llega tu pedido en Colombia</h2></div>
+<p style="color:var(--text-secondary);line-height:1.85;font-size:1rem;margin:0">Trabajamos con transportadoras nacionales y con entrega puerta a puerta en las ciudades principales. El pago contra entrega está disponible en la mayoría de los sectores urbanos; en municipios pequeños se coordina transferencia previa. Los pedidos se despachan el mismo día si se confirman antes del mediodía.</p>
+</div></section>
 <div class="section-header"><span class="section-label">Negocio</span><h2 class="section-title">Distribuidores en Colombia</h2></div>
 <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem">
 <p style="color:var(--text-secondary);line-height:1.85;font-size:.9375rem;margin:0 0 1rem">En Colombia el modelo funciona con distribuidores independientes que compran a precio de distribuidor y comercializan. No hay cuotas mensuales obligatorias ni penalidades por inactividad. Los resultados dependen del trabajo de cada persona.</p>
@@ -464,10 +515,16 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
 <div class="section-header"><span class="section-label">Preguntas frecuentes</span><h2 class="section-title">Dudas sobre HGW en Colombia</h2></div>
-<div style="display:grid;gap:1rem"><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Cuánto cuesta el envío en Colombia?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Depende de la ciudad y del tamaño del pedido. El envío es gratis a partir de $36.000 y coordinamos el valor exacto por WhatsApp antes de confirmar.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Hay pago contra entrega en Colombia?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Sí, en la mayoría de las ciudades principales. Al confirmar tu pedido por WhatsApp te indicamos si tu sector tiene contra entrega disponible.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Puedo recoger el pedido en una oficina?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">En varias ciudades trabajamos con entrega puerta a puerta. Consúltanos por tu ciudad específica y te confirmamos las opciones.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Cuánto tarda el envío?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Entre 24 y 48 horas en ciudades principales, y de 3 a 5 días hábiles en municipios y zonas rurales.</p></div></div>
+<div style="display:grid;gap:1rem"><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Cuánto cuesta el envío en Colombia?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Depende de la ciudad y del tamaño del pedido. El envío es gratis a partir de $36.000 y coordinamos el valor exacto por WhatsApp antes de confirmar.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Hay pago contra entrega en Colombia?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Sí, en la mayoría de las ciudades principales. Al confirmar tu pedido por WhatsApp te indicamos si tu sector tiene contra entrega disponible.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Puedo recoger el pedido en una oficina?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">En varias ciudades trabajamos con entrega puerta a puerta. Consúltanos por tu ciudad específica y te confirmamos las opciones.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Cuánto tarda el envío?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Entre 24 y 48 horas en ciudades principales, y de 3 a 5 días hábiles en municipios y zonas rurales.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Qué pasa si no estoy en casa cuando llega el pedido?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">La transportadora te contacta antes de entregar para acordar franja horaria. Si no logra entregar, reprograma para el siguiente día hábil sin costo adicional.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Los precios cambian según la ciudad?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">No. El precio del producto es el mismo en todo el país; lo que varía es el costo de envío, que depende de la ciudad y del tamaño del pedido.</p></div></div>
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<!-- HGW-RELACIONADOS -->
+<section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<div class="section-header"><span class="section-label">Otros mercados</span><h2 class="section-title">HGW en otros países de Latinoamérica</h2></div>
+<div style="display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))"><a href="/paises/peru/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇵🇪</span> HGW Perú</a><a href="/paises/mexico/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇲🇽</span> HGW México</a><a href="/paises/ecuador/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇪🇨</span> HGW Ecuador</a><a href="/paises/bolivia/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇧🇴</span> HGW Bolivia</a><a href="/paises/chile/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇨🇱</span> HGW Chile</a></div>
+<p style="color:var(--text-muted);font-size:.8125rem;line-height:1.7;margin-top:1.25rem">Ver <a href="/paises/" style="color:var(--accent-green)">todos los mercados</a> donde HGW tiene catálogo activo, o el <a href="/productos/" style="color:var(--accent-green)">catálogo de productos</a>.</p>
+</div></section>
 <div style="border-left:2px solid rgba(0,255,157,.35);padding-left:1.25rem">
 <p style="color:var(--text-muted);font-size:.8125rem;line-height:1.7;margin:0 0 .4rem"><strong>Fuentes:</strong> selector de país de la plataforma oficial de HGW (www.healthgreenworld.com); información corporativa regional de la marca; normativa publicada por la autoridad sanitaria de cada país.</p>
 <p style="color:var(--text-muted);font-size:.8125rem;line-height:1.7;margin:0 0 .4rem"><strong>Actualizado:</strong> 30 de septiembre de 2026</p>
@@ -568,6 +625,22 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
     "acceptedAnswer": {
      "@type": "Answer",
      "text": "Entre 24 y 48 horas en ciudades principales, y de 3 a 5 días hábiles en municipios y zonas rurales."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "¿Qué pasa si no estoy en casa cuando llega el pedido?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "La transportadora te contacta antes de entregar para acordar franja horaria. Si no logra entregar, reprograma para el siguiente día hábil sin costo adicional."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "¿Los precios cambian según la ciudad?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "No. El precio del producto es el mismo en todo el país; lo que varía es el costo de envío, que depende de la ciudad y del tamaño del pedido."
     }
    }
   ]

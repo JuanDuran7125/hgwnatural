@@ -245,6 +245,30 @@
     "@type": "Answer",
     "text": "Sí, absolutamente. Como distribuidor HGW recibirás: 1) Capacitación inicial sobre productos y técnicas de venta, 2) Material digital descargable con catálogos, presentaciones y guías, 3) Acompañamiento permanente de tu línea de apoyo, 4) Entrenamiento en manejo de redes sociales y marketing digital, 5) Acceso a eventos y capacitaciones grupales. Te ayudamos a construir tu negocio paso a paso."
    }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Los envíos se retrasan en época de lluvias?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "En zonas costeras o de montaña puede haber demoras puntuales por el estado de las vías. Al confirmar tu pedido te avisamos si tu zona está afectada."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo funciona el pago en Costa Rica?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Se coordina por WhatsApp según tu ubicación. Te indicamos las opciones disponibles al confirmar el pedido."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Los productos tienen información de ingredientes publicada?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí. Cada producto tiene su propia página con composición, modo de uso y advertencias, para que puedas revisarla antes de comprar."
+   }
   }
  ]
 }
@@ -417,8 +441,35 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 @media(max-width:768px){.hero-content{padding:8rem 1.25rem 3rem!important}.container{padding:0 1.25rem}}
 </style>
 </head>
-<body>
-<nav class="nav" id="nav"><div class="nav-inner"><a href="/" class="logo">HGW</a>
+<body><!-- HGW-ADD2 --><!-- HGW-ADD -->
+<!-- SELECTOR DE PAÍS (sugerencia, nunca bloquea) -->
+<div id="hgw-geo" style="display:none;position:relative;z-index:900;margin-top:85px;background:rgba(0,255,157,.06);border-bottom:1px solid rgba(0,255,157,.2);padding:.85rem 1.5rem">
+<div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.85rem;align-items:center;justify-content:space-between">
+<p id="hgw-geo-text" style="color:var(--text-secondary);font-size:.875rem;margin:0;flex:1 1 300px"></p>
+<div style="display:flex;gap:.6rem;flex-shrink:0">
+<button id="hgw-geo-yes" style="background:var(--accent-green);border:none;color:#06120c;padding:.45rem 1.1rem;border-radius:100px;font-size:.8125rem;font-weight:700;cursor:pointer">Ver</button>
+<button id="hgw-geo-no" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--text-secondary);padding:.45rem 1.1rem;border-radius:100px;font-size:.8125rem;cursor:pointer">Seguir en global</button>
+</div></div></div>
+<script>
+(function(){
+  var MAP={"America/Bogota":["colombia","Colombia"],"America/Lima":["peru","Perú"],"America/Mexico_City":["mexico","México"],
+  "America/Guayaquil":["ecuador","Ecuador"],"America/La_Paz":["bolivia","Bolivia"],"America/Santiago":["chile","Chile"],
+  "America/Panama":["panama","Panamá"],"America/Costa_Rica":["costa-rica","Costa Rica"],"America/Guatemala":["guatemala","Guatemala"],
+  "America/El_Salvador":["el-salvador","El Salvador"],"America/Asuncion":["paraguay","Paraguay"],
+  "America/Santo_Domingo":["republica-dominicana","República Dominicana"]};
+  try{ if(localStorage.getItem('hgw_country_choice')) return; }catch(e){}
+  var tz=""; try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){}
+  var hit=MAP[tz]; if(!hit) return;
+  var g=document.getElementById('hgw-geo');
+  document.getElementById('hgw-geo-text').innerHTML='Parece que estás en <strong>'+hit[1]+'</strong>. ¿Quieres ver los productos y la información de '+hit[1]+'?';
+  g.style.display='block';
+  function remember(){ try{localStorage.setItem('hgw_country_choice',hit[0]);}catch(e){} }
+  document.getElementById('hgw-geo-yes').onclick=function(){
+    if(window.hgwTrack)hgwTrack('country_selected',{country:hit[0]});
+    remember(); location.href='/paises/'+hit[0]+'/';};
+  document.getElementById('hgw-geo-no').onclick=function(){ remember(); g.style.display='none'; };
+})();
+</script><nav class="nav" id="nav"><div class="nav-inner"><a href="/" class="logo">HGW</a>
 <div class="nav-menu"><a href="/productos/">Productos</a><a href="/pages/ciencia-hgw">Ciencia</a><a href="/paises/">Países</a>
 <a href="/pages/oportunidad">Negocio</a><a href="https://wa.me/573016450378?text=Hola%2C+vengo+de+hgwnatural.com+%E2%80%94+Quiero+informaci%C3%B3n+de+productos+HGW+en+Costa+Rica" class="nav-cta">WhatsApp</a></div></div></nav>
 <section class="hero" style="min-height:38vh"><div class="hero-grid"></div>
@@ -447,6 +498,10 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
 <p style="color:var(--text-secondary);line-height:1.85;font-size:1rem;margin:0">Un dato costarricense útil: el país no tiene ejército desde 1948 y ha orientado buena parte de su inversión pública a salud y educación. Ese contexto explica el alto nivel de exigencia del consumidor costarricense en materia de información y de respaldo institucional de los productos que compra.</p>
 </div></section>
+<section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<div class="section-header"><span class="section-label">Contexto local</span><h2 class="section-title">Por qué estos productos encajan en Costa Rica</h2></div>
+<p style="color:var(--text-secondary);line-height:1.85;font-size:1rem;margin:0">Costa Rica tiene dos estaciones —seca y lluviosa— y una altitud que modula la temperatura del Valle Central. La humedad característica del país hace que la sensación de frescura sea un criterio de compra frecuente, junto con la preferencia local por productos de composición sencilla y origen claro.</p>
+</div></section>
 <div class="section-header"><span class="section-label">Cómo comprar</span><h2 class="section-title">Comprar en Costa Rica</h2></div>
 <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem">
 <p style="color:var(--text-secondary);line-height:1.85;font-size:.9375rem;margin:0 0 1rem">La compra se gestiona con distribuidores costarricenses. El Valle Central —San José, Alajuela, Cartago y Heredia— concentra la mayor parte de la población y del consumo.</p>
@@ -458,6 +513,14 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<div class="section-header"><span class="section-label">Entrega</span><h2 class="section-title">Cómo llega tu pedido en Costa Rica</h2></div>
+<p style="color:var(--text-secondary);line-height:1.85;font-size:1rem;margin:0">El país es pequeño y con buena red vial, lo que permite cubrir el Valle Central con rapidez. Las zonas costeras y el sur del país requieren más tiempo por las distancias y la época de lluvias.</p>
+</div></section>
+<section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<div class="section-header"><span class="section-label">Consultas frecuentes</span><h2 class="section-title">Preguntas que nos hacen desde Costa Rica</h2></div>
+<p style="color:var(--text-secondary);line-height:1.85;font-size:1rem;margin:0">Nos consultan con frecuencia si los productos se pueden enviar fuera del Valle Central y si hay problema con la época de lluvias. La respuesta es que sí llegamos a las provincias costeras, y que en los meses de mayor precipitación conviene pedir con algo de margen porque las rutas de montaña pueden tener demoras puntuales. También nos preguntan por la composición: el consumidor costarricense suele leer la etiqueta antes de comprar, así que publicamos la información de ingredientes y modo de uso en cada producto.</p>
+</div></section>
 <div class="section-header"><span class="section-label">Negocio</span><h2 class="section-title">Distribuidores en Costa Rica</h2></div>
 <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem">
 <p style="color:var(--text-secondary);line-height:1.85;font-size:.9375rem;margin:0 0 1rem">La red costarricense opera con distribuidores independientes.</p>
@@ -467,10 +530,16 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
 
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
 <div class="section-header"><span class="section-label">Preguntas frecuentes</span><h2 class="section-title">Dudas sobre HGW en Costa Rica</h2></div>
-<div style="display:grid;gap:1rem"><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Qué autoridad regula los productos en Costa Rica?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">El Ministerio de Salud de Costa Rica, mediante sus direcciones de regulación, es la autoridad sanitaria competente para cosméticos, higiene y alimentos.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿En qué moneda se publican los precios?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">En colones costarricenses (CRC), aunque en la práctica muchos comercios muestran también la referencia en dólares.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Dónde se concentra el consumo en Costa Rica?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">En el Valle Central: San José, Alajuela, Cartago y Heredia.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Cómo compro productos HGW en Costa Rica?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Escríbenos por WhatsApp: atendemos toda Latinoamérica desde una línea única.</p></div></div>
+<div style="display:grid;gap:1rem"><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Qué autoridad regula los productos en Costa Rica?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">El Ministerio de Salud de Costa Rica, mediante sus direcciones de regulación, es la autoridad sanitaria competente para cosméticos, higiene y alimentos.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿En qué moneda se publican los precios?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">En colones costarricenses (CRC), aunque en la práctica muchos comercios muestran también la referencia en dólares.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Dónde se concentra el consumo en Costa Rica?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">En el Valle Central: San José, Alajuela, Cartago y Heredia.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Cómo compro productos HGW en Costa Rica?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Escríbenos por WhatsApp: atendemos toda Latinoamérica desde una línea única.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Los envíos se retrasan en época de lluvias?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">En zonas costeras o de montaña puede haber demoras puntuales por el estado de las vías. Al confirmar tu pedido te avisamos si tu zona está afectada.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Cómo funciona el pago en Costa Rica?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Se coordina por WhatsApp según tu ubicación. Te indicamos las opciones disponibles al confirmar el pedido.</p></div><div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.75rem"><h3 style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem">¿Los productos tienen información de ingredientes publicada?</h3><p style="color:var(--text-secondary);font-size:.9375rem;line-height:1.75;margin:0">Sí. Cada producto tiene su propia página con composición, modo de uso y advertencias, para que puedas revisarla antes de comprar.</p></div></div>
 </div></section>
 
 <section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<!-- HGW-RELACIONADOS -->
+<section class="section" style="padding-top:0"><div class="container" style="max-width:860px">
+<div class="section-header"><span class="section-label">Otros mercados</span><h2 class="section-title">HGW en otros países de Latinoamérica</h2></div>
+<div style="display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))"><a href="/paises/guatemala/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇬🇹</span> HGW Guatemala</a><a href="/paises/el-salvador/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇸🇻</span> HGW El Salvador</a><a href="/paises/paraguay/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇵🇾</span> HGW Paraguay</a><a href="/paises/republica-dominicana/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇩🇴</span> HGW República Dominicana</a><a href="/paises/colombia/" style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:.9rem 1.1rem;text-decoration:none;color:var(--text-secondary);font-size:.875rem"><span style="font-size:1.25rem">🇨🇴</span> HGW Colombia</a></div>
+<p style="color:var(--text-muted);font-size:.8125rem;line-height:1.7;margin-top:1.25rem">Ver <a href="/paises/" style="color:var(--accent-green)">todos los mercados</a> donde HGW tiene catálogo activo, o el <a href="/productos/" style="color:var(--accent-green)">catálogo de productos</a>.</p>
+</div></section>
 <div style="border-left:2px solid rgba(0,255,157,.35);padding-left:1.25rem">
 <p style="color:var(--text-muted);font-size:.8125rem;line-height:1.7;margin:0 0 .4rem"><strong>Fuentes:</strong> selector de país de la plataforma oficial de HGW (www.healthgreenworld.com); información corporativa regional de la marca; normativa publicada por la autoridad sanitaria de cada país.</p>
 <p style="color:var(--text-muted);font-size:.8125rem;line-height:1.7;margin:0 0 .4rem"><strong>Actualizado:</strong> 30 de septiembre de 2026</p>
@@ -571,6 +640,30 @@ footer{padding:6rem 0 3rem;border-top:1px solid rgba(255,255,255,.06);position:r
     "acceptedAnswer": {
      "@type": "Answer",
      "text": "Escríbenos por WhatsApp: atendemos toda Latinoamérica desde una línea única."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "¿Los envíos se retrasan en época de lluvias?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "En zonas costeras o de montaña puede haber demoras puntuales por el estado de las vías. Al confirmar tu pedido te avisamos si tu zona está afectada."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "¿Cómo funciona el pago en Costa Rica?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Se coordina por WhatsApp según tu ubicación. Te indicamos las opciones disponibles al confirmar el pedido."
+    }
+   },
+   {
+    "@type": "Question",
+    "name": "¿Los productos tienen información de ingredientes publicada?",
+    "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "Sí. Cada producto tiene su propia página con composición, modo de uso y advertencias, para que puedas revisarla antes de comprar."
     }
    }
   ]
